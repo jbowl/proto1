@@ -1,0 +1,32 @@
+syntax = "proto3";
+
+package fileserv;
+
+//protoc -I . fileserv.proto --go_out=plugins=grpc:.
+
+service FileServ {
+
+    // find file
+    rpc FindFile(FileName) returns (FileName) {}
+    //
+    // cp file
+    rpc GetFile(FileName) returns (stream FilePiece) {}
+
+    // ls file
+    rpc LS(FileName) returns (stream FileInfo) {}
+}
+
+message FileName {
+    string file = 1;
+}
+
+message  FileInfo {
+    string mode = 1;
+    int64 size = 2;
+    int64 unixdate = 3;
+    string name = 4;
+}
+
+message FilePiece {
+    bytes chunk = 1;
+}
