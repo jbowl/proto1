@@ -95,9 +95,9 @@ func (c *client) ls(file string) error {
 
 func main() {
 
-	filePtr := flag.String("file", "/home/j/SAP/Summary.pdf", "path to file")
-	opPtr := flag.String("op", "cp", "choose operation")
-	destPtr := flag.String("dest", "dead.pdf", "dest file")
+	filePtr := flag.String("file", "", "path to file")
+	opPtr := flag.String("op", "", "choose operation")
+	destPtr := flag.String("dest", "", "dest file")
 
 	flag.Parse()
 
